@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Josh's Personal Growth Goals</title>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+		<script src='jquery.animate-colors.js'></script>
+
+
+		<style>
+		body{font-family: 'Helvetica';
+				padding: '0px';
+				text-align: 'bottom';
+			
+				padding-left:20%;
+				padding-right:20%;
+				padding-top:200px;
+				/*overflow-y:scroll;
+				overflow-x:scroll;*/
+				background-color:black;
+
+				;
+				}
+		#night{float:left;width:600px;z-index:6;position:absolute;bottom:80px;left:130px;}
+		#deer{z-index:7;float:left;width:100px;height:100px;vertical-align: 'bottom';position:absolute;bottom:320px;}
+		#tree{z-index:10;opacity:.9;}
+		#treeRed{z-index:9;opacity:.9;}
+		#treeBranches{z-index:8;}
+		.treeClass{float:right;width:350px;height:350px;vertical-align: 'bottom';position:absolute;bottom:320px;opacity:1;}
+		.goodIcon{border:5px solid pink;width:50px;}
+		
+		.invert {-webkit-filter: invert(100%); filter: invert(100%);}
+
+
+		</style>
+		<script>
+		$(document).ready(function() {
+
+		
+			treeCounter=1;
+			treeColorShiftLoop();
+		
+});
+		function reposeBottomTree(){
+			treeRed.style.left=tree.getBoundingClientRect().left+"px";
+			treeBranches.style.left=tree.getBoundingClientRect().left+"px";
+		}
+
+		function treeToRed(){
+		$('#treeRed').animate({opacity: .9},5000);
+		$('#tree').animate({opacity: 0},5000);
+	}
+
+	function treeToGreen(){
+		$('#tree').animate({opacity: .9},5000);
+
+	}
+
+	function treeToWinter(){
+		
+		$('#treeRed').animate({opacity: 0},5000);
+		$('#tree').animate({opacity: 0},5000);
+	}
+
+	function treeColorShiftLoop(){
+		setInterval(function(){
+			if(treeCounter==1){
+				treeCounter++;
+				treeToRed();}
+			else if(treeCounter==2){
+				treeCounter++;
+				treeToWinter();}	
+			else if(treeCounter==3){
+				treeCounter=1;
+				treeToGreen();}},5000);
+
+
+	}
+
+		</script>
+	</head>
+	<body onload="reposeBottomTree()" onresize="reposeBottomTree()">
+		<table>
+			<tr><td>
+		<img id="deer" src="deer.png" class=""></td>
+		<td><img id="tree" src="tree.png" class="treeClass"><img id="treeRed" src="tree_red.png" class="treeClass"><img id="treeBranches" src="tree_branches.png" class="treeClass"></td>
+	</tr>
+	</table>
+	<table>
+		<tr><td>
+	<img id="night" src="night.png">
+</td></tr>
+<tr>
+			<td></td>
+			<td></td>
+		</tr>
+		<tbody id="goodChoices" style="position:absolute;bottom:0px;">
+		
+	</tbody>
+</table>
+
+
+	</body>
+</html>
